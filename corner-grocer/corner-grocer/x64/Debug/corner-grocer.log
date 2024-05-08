@@ -1,2 +1,5 @@
-﻿  corner-grocer-app.cpp
+﻿  CLI.cpp
+  corner-grocer-app.cpp
+  cornerGrocerBackend.cpp
+  Generating Code...
   corner-grocer.vcxproj -> D:\Programming Projects\Programming-languages\Corner-Grocer\corner-grocer\x64\Debug\corner-grocer.exe

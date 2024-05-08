@@ -1,5 +1,9 @@
-// corner-grocer.cpp : This file contains the 'main' function. Program execution begins and ends there.
-//
+/*
+Corner Grocer Project 3
+Julian Pompey
+05/08/2024
+
+*/
 
 #include <iostream>
 #include "CLI.h"

@@ -5,13 +5,8 @@
 #include <iostream>
 #include <sstream>
 #include <string>
-#include <fstream>
 #include <map>
-#include <cctype>
-#include <algorithm>
 #include <iomanip>
-
-
 #include "cornerGrocerBackend.h"
 
 
@@ -27,6 +22,8 @@ private:
 	void m_itemPurchaseFrequency(std::map<std::string, int> t_groceryMap); //menu option 2
 	void m_itemHistogram(std::map<std::string, int> t_groceryMap); //menu option 3
 	void m_exitProgram(); //menu option 4
+	void m_printMainMenuOptions();
+	void m_printSpacing();
 	bool active = true;
 
 };

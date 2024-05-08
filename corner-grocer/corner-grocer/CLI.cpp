@@ -3,26 +3,24 @@
 void CLI::mainMenu() {
 
 	cgb.createGroceryMap();
-	//welcome message
+	std::cout << "Welcome to the Corner Grocer Application" << std::endl;
 
 	std::string input;
 
-	//display options
-
 	while (active){
+		//The main menu options
+		m_printMainMenuOptions();
+
 
 		int selection;
 
 		std::getline(std::cin, input);
 		std::stringstream ss(input);
-		//maybe define the map here
 
-
-
-		//checks if the correct value was inputted
+		//checks if the the value is an integer between 1 and 4
 		while (!(ss >> selection) || selection > 4 || selection < 1) {
 
-			std::cout << "Wrong" << std::endl; //TODO: fix this message
+			std::cout << "Please Enter a Valid Input" << std::endl; 
 			std::getline(std::cin, input);
 
 			//need to clear the string stream before retrying
@@ -32,25 +30,23 @@ void CLI::mainMenu() {
 		}
 
 
-
+		//the logic of the main menu using a switch statement
 		switch (selection) {
-		case 1:
-			std::cout << "option 1" << std::endl;
+		case 1: //Finding the Entered Item
 			m_findItem();
+			break;
 
-		case 2:
-			std::cout << "option 2" << std::endl;
-			//item purchase frequency
+		case 2: //Printing the freqeuncy of the items
 			m_itemPurchaseFrequency(cgb.getGroceryMap());
+			break;
 
-		case 3: 
-			//item histogram
-			std::cout << "option 3" << std::endl;
+		case 3: //Printing A histogram of the Items
 			m_itemHistogram(cgb.getGroceryMap());
+			break;
 
-		case 4:
-			std::cout << "option 4" << std::endl;
+		case 4: //Exits the Program
 			m_exitProgram();
+			break;
 		}
 	}
 
@@ -61,6 +57,8 @@ void CLI::mainMenu() {
 
 
 void CLI::m_findItem() {
+	std::cout << "Please Enter an Item Name to Search: " << std::endl;
+
 	//prompt them to look for an item
 	std::string input;
 
@@ -91,39 +89,74 @@ void CLI::m_findItem() {
 
 
 	if (cgb.getGroceryMap().count(itemToFind) == 1) {
+		std::cout << std::endl;
 		std::cout << itemToFind << ": " << cgb.getGroceryMap().at(itemToFind) << std::endl;
 	}
 	else {
+		std::cout << std::endl;
 		std::cout << "item not found" << std::endl;
 	}
 
+	m_printSpacing();
 }
 
 
 void CLI::m_itemPurchaseFrequency(std::map<std::string, int> groceryMap) {
-	
+	std::cout << "Printing the Item Frequency";
+	m_printSpacing();
+
+
+	//iterates through the map and returns each K/V pair
 	std::map < std::string, int>::iterator it;
 	
 	for (it = groceryMap.begin(); it != groceryMap.end(); it++) {
 		std::cout << it->first << " " << it->second << std::endl;
 	}
 
+	m_printSpacing();
+
 }
 
 void CLI::m_itemHistogram(std::map<std::string, int> groceryMap) {
+	std::cout << "Printing Histogram of Purchased Items";
+	m_printSpacing();
+
+
+	//loops through the map and returns the K/V pairs as Keys and a number of stars
 	std::map < std::string, int>::iterator it;
 
 	for (it = groceryMap.begin(); it != groceryMap.end(); it++) {
 		std::cout << it->first << " ";
 		std::cout << std::setfill('*') << std::setw(it->second) << '*';
-
-		//for (int i = 0; i < it->second; i++) {
-		//	std::cout << "*";
-		//}
 		std::cout << std::endl;
 	}
+
+	m_printSpacing();
 }
 
 void CLI::m_exitProgram() {
+	std::cout << "Exiting Program";
+	m_printSpacing();
+
+
+	//exits the program
 	active = false;
+}
+
+void CLI::m_printMainMenuOptions() {
+	//printing the options to the console
+	std::cout << std::endl << std::setfill('=') << std::setw(40) << "=" << std::endl;
+	std::cout << "Please Select an option" << std::endl
+		<< "1. Find Item" << std::endl
+		<< "2. Item Purchase Frequency" << std::endl
+		<< "3. Item Historgram" << std::endl
+		<< "4. Exit Program" << std::endl;
+	std::cout << std::setfill('=') << std::setw(40) << "=" << std::endl
+		<< std::endl;
+}
+
+void CLI::m_printSpacing() {
+	std::cout << std::endl;
+	system("pause");
+	std::cout << std::endl;
 }
