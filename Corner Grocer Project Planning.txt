@@ -1,0 +1,31 @@
+Corner Grocer Project Planning
+
+Menu 1 <probably going to be the most annoying part>
+Prompt user to input item they want to look for
+Return numeric value for item frequency
+	Only thing that can accept user input. Need to add a catch for when they input something bad or invalid
+
+Menu2 -> a for loop but more annoying
+Print the list with numbers representing frequency of all items purchased.
+	Loop through the file then add them to an array, loop through the array to record the amount of the item purchased.
+
+
+
+Menu 3 -> just a for loop
+Print the same frequency information for all items in the form of a histogram.
+Print name with a special character denoting the amount of times the item was purchased.
+	Easy for loop using similar code to menu item 2
+
+
+Menu 4
+Exit the program.
+
+
+mainApp.cpp
+cli.h
+cli.cpp
+	work on prompting input first and catching invalid input
+cornerGrocerBackend.h
+cornerGrocerBackend.cpp
+
+M-C model?
